@@ -4,20 +4,14 @@ use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 
-fn print_type_of<T>(_: &T) {
-    println!("{}", std::any::type_name::<T>())
-}
-
 fn main() {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
-    //print_type_of(&secret_number); // &str
+    println!("The secret number is: {}", secret_number);
 
     loop{
-        println!("The secret number is: {}", secret_number);
-
         println!("Please input your guess.");
 
         let mut guess = String::new();
