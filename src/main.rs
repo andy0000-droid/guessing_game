@@ -4,13 +4,19 @@ use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 
+fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
+}
+
 fn main() {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
+    //print_type_of(&secret_number); // &str
+
     loop{
-        //println!("The secret number is: {}", secret_number);
+        println!("The secret number is: {}", secret_number);
 
         println!("Please input your guess.");
 
@@ -21,8 +27,10 @@ fn main() {
 
         let guess: u32 = match guess.trim().parse(){
             Ok(num) => num,
-            Err(_) => {println!("Input error.\nPlease retype the input.\n");
-                continue;}
+            Err(_) => {
+                println!("Input error.\nPlease retype the input.\n");
+                continue;
+            }
         };
             //.expect("Please type a number!");
 
